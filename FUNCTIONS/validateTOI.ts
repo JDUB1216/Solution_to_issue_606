@@ -10,7 +10,9 @@ async function getValidator(): Promise<Ajv> {
   if (!validatorPromise) {
     validatorPromise = readFile(schemaPath, 'utf-8').then((schemaRaw) => {
       const schema = JSON.parse(schemaRaw);
-      const ajv = new Ajv({ allErrors: true, strict: true });
+      // Use validateSchema: false to skip meta-schema validation
+      // This allows us to use schemas with $schema references that aren't loaded
+      const ajv = new Ajv({ allErrors: true, strict: false, validateSchema: false });
       ajv.addSchema(schema, 'toi');
       return ajv;
     });
