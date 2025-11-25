@@ -95,7 +95,7 @@ function validateInitiationRights(value: unknown, basePath: string, errors: Vali
     } else {
       const maxInit = value.rate_limits.max_initiations_per_hour;
       if (typeof maxInit !== 'number' || !Number.isInteger(maxInit) || maxInit <= 0) {
-        errors.push({ path: `${basePath}.rate_limits`, message: 'rate_limits must declare a positive integer max_initiations_per_hour.' });
+        errors.push({ path: `${basePath}.rate_limits.max_initiations_per_hour`, message: 'max_initiations_per_hour must be a positive integer.' });
       }
     }
   }

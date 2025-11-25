@@ -70,7 +70,7 @@ export async function attachTOIOnAgentJoin({ agent, repository, writer }: Attach
     updated = {
       ...agent,
       toi_status: 'invalid',
-      validation_errors: [{ path: 'TOI', message: `Failed to load TOI for role ${agent.role}: ${message}` }]
+      validation_errors: [{ path: 'toi.loading', message: `Failed to load TOI for role ${agent.role}: ${message}` }]
     };
   }
 
